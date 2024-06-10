@@ -10,3 +10,8 @@ export { default as PaginationContainer } from "./PaginationContainer";
 export { default as ProductsLisxt } from "./ProductsLisxt";
 export { default as FormInput } from "./FormInput";
 export { default as FormSelect } from "./FormSelect";
+export { default as SelectProductColour } from "./SelectProductColour";
+export { default as SelectProductAmount } from "./SelectProductAmount";
+export { default as CartTotal } from "./CartTotal";
+
+export { default as CartItemsList } from "./CartItemsList";
