@@ -18,7 +18,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { loader as landingLoader } from "./pages/Landing";
 import { loader as productsLoader } from "./pages/Products";
 import { loader as singleProductLoader } from "./pages/SingleProduct";
+import { loader as ordersLoader } from "./pages/Orders";
 import { action as loginAction } from "./pages/Login";
+import { action as CheckoutAction } from "./components/CheckoutForm";
 import { store } from "./store";
 
 const router = createBrowserRouter([
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
         errorElement: <ErrorElement />,
+        action: CheckoutAction(store),
       },
       {
         path: "cart",
@@ -64,6 +67,7 @@ const router = createBrowserRouter([
         path: "orders",
         element: <Orders />,
         errorElement: <ErrorElement />,
+        loader: ordersLoader(store),
       },
     ],
   },
