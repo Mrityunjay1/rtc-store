@@ -4,38 +4,36 @@ import SectionTitle from "../components/SectionTitle";
 import { CartItemsList, CartTotal } from "../components";
 import { Button } from "../components/ui/button";
 
-const Cart = () => {
-  // temp
-  const user = null;
+function Cart() {
+  const user = useAppSelector((state) => state.userState.user);
 
   const numItemsInCart = useAppSelector(
     (state) => state.cartState.numItemsInCart
   );
-
   if (numItemsInCart === 0) {
-    return <SectionTitle text="Empty cart ☹️" />;
+    return <SectionTitle text="Empty cart" />;
   }
+
   return (
     <>
       <SectionTitle text="Shopping Cart" />
-      <div className="mt-8 grid gap-8  lg:grid-cols-12">
+      <div className="mt-8 grid gap-8 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <CartItemsList />
         </div>
         <div className="lg:col-span-4 lg:pl-4">
           <CartTotal />
-          {user ? (
-            <Button asChild className="mt-8 w-full">
-              <Link to="/checkout">Proceed to checkout</Link>
-            </Button>
-          ) : (
-            <Button asChild className="mt-8 w-full">
+
+          <Button asChild className="mt-8 w-full">
+            {user ? (
+              <Link to="/checkout"> Proceed to checkout</Link>
+            ) : (
               <Link to="/login">Please Login</Link>
-            </Button>
-          )}
+            )}
+          </Button>
         </div>
       </div>
     </>
   );
-};
+}
 export default Cart;
